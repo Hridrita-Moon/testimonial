@@ -1,0 +1,88 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String         @id @default(uuid())
+  name          String
+  email         String         @unique
+  passwordHash  String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  spaces        Space[]
+  subscriptions Subscription[]
+}
+
+model Space {
+  id                   String                @id @default(uuid())
+  ownerId              String
+  owner                User                  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  title                String
+  subtitle             String?
+  prompt               String
+  theme                String                @default("light")
+  ratingEnabled        Boolean               @default(true)
+  publicSlug           String                @unique
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  fields               SpaceField[]
+  testimonials         Testimonial[]
+  embedConfigurations  EmbedConfiguration[]
+}
+
+model SpaceField {
+  id           String   @id @default(uuid())
+  spaceId      String
+  space        Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  fieldType    String
+  label        String
+  enabled      Boolean  @default(true)
+  required     Boolean  @default(false)
+  displayOrder Int      @default(0)
+}
+
+model Testimonial {
+  id                 String   @id @default(uuid())
+  spaceId            String
+  space              Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  contributorName    String
+  contributorEmail   String
+  testimonialText    String
+  rating             Int?
+  additionalValues   Json?
+  socialConsent      Boolean  @default(false)
+  isFavorite         Boolean  @default(false)
+  isWallOfLove       Boolean  @default(false)
+  visibilityStatus   String   @default("published")
+  submissionTimestamp DateTime @default(now())
+}
+
+model Subscription {
+  id                   String   @id @default(uuid())
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan                 String   @default("free")
+  status               String   @default("active")
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  currentBillingPeriod DateTime?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model EmbedConfiguration {
+  id            String   @id @default(uuid())
+  spaceId       String
+  space         Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  layout        String   @default("grid")
+  themeMode     String   @default("light")
+  backgroundColor String @default("#ffffff")
+  settings      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
