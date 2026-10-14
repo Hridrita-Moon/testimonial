@@ -44,6 +44,8 @@ model SpaceField {
   enabled      Boolean  @default(true)
   required     Boolean  @default(false)
   displayOrder Int      @default(0)
+
+  @@index([spaceId, displayOrder])
 }
 
 model Testimonial {
@@ -60,6 +62,9 @@ model Testimonial {
   isWallOfLove       Boolean  @default(false)
   visibilityStatus   String   @default("published")
   submissionTimestamp DateTime @default(now())
+
+  @@index([spaceId, submissionTimestamp])
+  @@index([spaceId, isWallOfLove, visibilityStatus])
 }
 
 model Subscription {
@@ -71,8 +76,11 @@ model Subscription {
   stripeCustomerId     String?
   stripeSubscriptionId String?
   currentBillingPeriod DateTime?
+  cancelAtPeriodEnd    Boolean  @default(false)
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
+
+  @@unique([userId])
 }
 
 model EmbedConfiguration {
@@ -85,4 +93,6 @@ model EmbedConfiguration {
   settings      Json?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  @@unique([spaceId])
 }
