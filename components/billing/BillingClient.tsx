@@ -74,7 +74,7 @@ export function BillingClient({
 
   if (alreadyPremium) {
     return (
-      <p className="text-sm text-zinc-600">
+      <p className="text-sm text-zinc-600 dark:text-zinc-400">
         You&apos;re already on Premium. Manage your subscription from the
         Stripe billing portal (coming soon).
       </p>
@@ -87,22 +87,22 @@ export function BillingClient({
         type="button"
         onClick={startCheckout}
         disabled={loading}
-        className="inline-flex h-11 items-center justify-center rounded-full bg-zinc-900 px-6 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-zinc-900 px-5 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
       >
         {loading ? "Redirecting…" : `Upgrade to Premium — ${getPremiumPriceDisplay()}`}
       </button>
       {error ? (
-        <p role="alert" className="text-sm text-red-600">
+        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
           {error}
         </p>
       ) : null}
       {hasCustomer ? null : (
-        <p className="text-xs text-zinc-500">
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
           You&apos;ll be redirected to Stripe to complete checkout. Your plan
           will activate after payment is confirmed.
         </p>
       )}
-      <p className="text-xs text-zinc-400">
+      <p className="text-xs text-zinc-400 dark:text-zinc-500">
         Running in test mode? Stripe will be skipped and your
         account will be upgraded locally so the flow can be
         exercised end-to-end without real credentials.

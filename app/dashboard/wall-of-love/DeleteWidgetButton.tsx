@@ -61,7 +61,7 @@ export function DeleteWidgetButton({
       disabled={busy}
       aria-label="Delete widget"
       title="Delete widget"
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-300 bg-white text-zinc-700 transition-colors hover:bg-red-50 hover:text-red-700 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-red-950/40 dark:hover:text-red-300"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-300 bg-white text-zinc-700 transition-all duration-200 hover:bg-red-50 hover:text-red-700 hover:border-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 disabled:opacity-60 disabled:cursor-not-allowed dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-red-950/40 dark:hover:text-red-300 dark:hover:border-red-800"
     >
       {/* trash icon */}
       <svg

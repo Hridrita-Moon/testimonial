@@ -85,27 +85,27 @@ export async function BillingContent({
 
   return (
     <>
-      <p className="mt-1 text-sm text-zinc-600">
-        Signed in as <span className="font-medium">{user.email}</span>
+      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+        Signed in as <span className="font-medium text-zinc-800 dark:text-zinc-200">{user.email}</span>
       </p>
 
       <PaymentResultBanner status={payment} premium={premium} />
 
       <section
         aria-labelledby="current-plan"
-        className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm"
+        className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
       >
         <h2
           id="current-plan"
-          className="text-lg font-semibold text-zinc-900"
+          className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
         >
           Current plan
         </h2>
-        <p className="mt-2 text-3xl font-semibold tracking-tight">
+        <p className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
           {premium ? "Premium" : "Free"}
         </p>
         {user.subscriptions?.[0]?.currentBillingPeriod ? (
-          <p className="mt-1 text-sm text-zinc-600">
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             Renews on{" "}
             {user.subscriptions[0].currentBillingPeriod.toLocaleDateString()}
           </p>
@@ -113,7 +113,7 @@ export async function BillingContent({
         {user.subscriptions?.[0]?.status &&
         user.subscriptions[0].status !== "active" &&
         !premium ? (
-          <p className="mt-2 text-sm text-amber-700">
+          <p className="mt-2 text-sm text-amber-700 dark:text-amber-400">
             Subscription status: {user.subscriptions[0].status}
           </p>
         ) : null}
@@ -121,23 +121,23 @@ export async function BillingContent({
 
       <section
         aria-labelledby="usage"
-        className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm"
+        className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
       >
-        <h2 id="usage" className="text-lg font-semibold text-zinc-900">
+        <h2 id="usage" className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
           Usage
         </h2>
         <dl className="mt-4 space-y-4">
           <UsageRow label="Spaces" used={spacesUsed} max={maxSpace} />
           <div>
             <div className="mb-1 flex items-baseline justify-between text-sm">
-              <span className="font-medium text-zinc-800">
+              <span className="font-medium text-zinc-800 dark:text-zinc-200">
                 Testimonials per space
               </span>
-              <span className="text-zinc-600">up to {perSpaceLimit}</span>
+              <span className="text-zinc-600 dark:text-zinc-400">up to {perSpaceLimit}</span>
             </div>
-            <ul className="space-y-1 text-sm text-zinc-600">
+            <ul className="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
               {spaces.length === 0 ? (
-                <li className="text-zinc-500">No spaces yet.</li>
+                <li className="text-zinc-500 dark:text-zinc-500">No spaces yet.</li>
               ) : (
                 spaces.map((s) => (
                   <li
@@ -158,12 +158,12 @@ export async function BillingContent({
 
       <section
         aria-labelledby="upgrade"
-        className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm"
+        className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
       >
-        <h2 id="upgrade" className="text-lg font-semibold text-zinc-900">
+        <h2 id="upgrade" className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
           {premium ? "Manage subscription" : "Upgrade to Premium"}
         </h2>
-        <p className="mt-2 text-sm text-zinc-600">
+        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
           {premium
             ? "You're on the Premium plan. Use the Stripe billing portal to update payment methods or cancel."
             : `Unlock up to ${PLAN_LIMITS.premium.maxSpaces} spaces and ${PLAN_LIMITS.premium.maxTestimonialsPerSpace} testimonials per space.`}
@@ -192,20 +192,20 @@ function UsageRow({
   return (
     <div>
       <div className="mb-1 flex items-baseline justify-between text-sm">
-        <span className="font-medium text-zinc-800">{label}</span>
-        <span className="text-zinc-600">
+        <span className="font-medium text-zinc-800 dark:text-zinc-200">{label}</span>
+        <span className="text-zinc-600 dark:text-zinc-400">
           {used} / {max}
         </span>
       </div>
       <div
-        className="h-2 w-full overflow-hidden rounded-full bg-zinc-100"
+        className="h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800"
         role="progressbar"
         aria-valuenow={used}
         aria-valuemin={0}
         aria-valuemax={max}
       >
         <div
-          className="h-full rounded-full bg-zinc-900 transition-all"
+          className="h-full rounded-full bg-zinc-900 transition-all duration-500 dark:bg-zinc-100"
           style={{ width: `${pct}%` }}
         />
       </div>

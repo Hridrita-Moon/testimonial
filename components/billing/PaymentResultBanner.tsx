@@ -29,7 +29,7 @@ export function PaymentResultBanner({
     return (
       <div
         role="status"
-        className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900"
+        className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 dark:border-emerald-800/50 dark:bg-emerald-950/40 dark:text-emerald-200"
       >
         {premium
           ? "Payment confirmed and Premium is active. Thank you!"
@@ -41,7 +41,7 @@ export function PaymentResultBanner({
     return (
       <div
         role="status"
-        className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+        className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-800/50 dark:bg-amber-950/40 dark:text-amber-200"
       >
         <p>
           <span className="font-semibold">Test mode upgrade complete.</span>{" "}
@@ -49,7 +49,7 @@ export function PaymentResultBanner({
           checkout to flip your account to Premium. Your plan and limits
           are now updated.
         </p>
-        <p className="mt-2 text-xs text-amber-800">
+        <p className="mt-2 text-xs text-amber-800 dark:text-amber-300">
           No real card was charged. Set <code>STRIPE_SECRET_KEY</code> and
           <code> STRIPE_PREMIUM_PRICE_ID</code> in <code>.env</code> to use
           the real Stripe Checkout flow.
@@ -61,7 +61,7 @@ export function PaymentResultBanner({
     return (
       <div
         role="status"
-        className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+        className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-800/50 dark:bg-amber-950/40 dark:text-amber-200"
       >
         Checkout was cancelled. You haven&apos;t been charged.
       </div>

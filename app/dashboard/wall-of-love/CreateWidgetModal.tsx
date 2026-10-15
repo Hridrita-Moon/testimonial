@@ -120,19 +120,19 @@ export function CreateWidgetModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/50 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/60 backdrop-blur-sm p-4"
       onClick={() => !submitting && onClose()}
       role="dialog"
       aria-modal="true"
       aria-label="Create a new wall of love widget"
     >
       <div
-        className="flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-zinc-950"
+        className="flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl ring-1 ring-black/5 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-white/10"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="flex items-baseline justify-between border-b border-zinc-200 px-6 py-4 dark:border-zinc-800">
           <div>
-            <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            <h2 className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
               Create Wall of Love
             </h2>
             <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
@@ -144,7 +144,7 @@ export function CreateWidgetModal({
             onClick={onClose}
             disabled={submitting}
             aria-label="Close"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 hover:bg-zinc-100 disabled:opacity-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-300 bg-white text-zinc-500 transition-all duration-200 hover:bg-zinc-50 hover:text-zinc-900 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M18 6L6 18M6 6l12 12" />
@@ -177,7 +177,7 @@ export function CreateWidgetModal({
                 value={spaceId}
                 onChange={(e) => setSpaceId(e.target.value)}
                 disabled={submitting}
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
               >
                 {availableSpaces.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -249,14 +249,14 @@ export function CreateWidgetModal({
               type="button"
               onClick={onClose}
               disabled={submitting}
-              className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-800 hover:bg-zinc-50 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
+              className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-800 transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 disabled:opacity-60 disabled:cursor-not-allowed dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting || !hasSpaces}
-              className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-zinc-900 px-4 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 active:bg-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-zinc-100"
             >
               {submitting ? "Creating…" : "Create widget"}
             </button>
@@ -282,7 +282,7 @@ function SegmentedControl<T extends string>({
     <div
       role="radiogroup"
       aria-label={name}
-      className="inline-flex w-fit rounded-md border border-zinc-300 bg-white p-0.5 dark:border-zinc-700 dark:bg-zinc-900"
+      className="inline-flex w-fit rounded-md border border-zinc-300 bg-zinc-100 p-0.5 transition-all duration-200 dark:border-zinc-700 dark:bg-zinc-800/50"
     >
       {options.map((o) => {
         const active = o.value === value;
@@ -295,8 +295,8 @@ function SegmentedControl<T extends string>({
             onClick={() => onChange(o.value)}
             className={
               active
-                ? "rounded px-3 py-1 text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                : "rounded px-3 py-1 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                ? "rounded px-3 py-1 text-sm font-medium bg-zinc-900 text-white shadow-sm transition-all duration-200 dark:bg-zinc-100 dark:text-zinc-900"
+                : "rounded px-3 py-1 text-sm font-medium text-zinc-700 transition-colors duration-150 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
             }
           >
             {o.label}
@@ -332,15 +332,15 @@ function Toggle({
         onClick={() => onChange(!checked)}
         className={
           checked
-            ? "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-900 transition-colors dark:bg-zinc-100"
-            : "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-300 transition-colors dark:bg-zinc-700"
+            ? "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-900 transition-all duration-200 dark:bg-zinc-100"
+            : "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-300 transition-all duration-200 dark:bg-zinc-700"
         }
       >
         <span
           className={
             checked
-              ? "inline-block h-4 w-4 translate-x-4 transform rounded-full bg-white transition-transform dark:bg-zinc-900"
-              : "inline-block h-4 w-4 translate-x-0.5 transform rounded-full bg-white transition-transform dark:bg-zinc-200"
+              ? "inline-block h-4 w-4 translate-x-4 transform rounded-full bg-white shadow-sm transition-transform dark:bg-zinc-900"
+              : "inline-block h-4 w-4 translate-x-0.5 transform rounded-full bg-white shadow-sm transition-transform dark:bg-zinc-200"
           }
         />
       </button>

@@ -49,11 +49,11 @@ export function DashboardShell({
       <header className="flex items-center justify-between border-b border-zinc-200 bg-white px-4 py-3 md:hidden dark:border-zinc-800 dark:bg-zinc-900">
         <Link
           href="/dashboard"
-          className="text-sm font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
+          className="text-sm font-semibold tracking-tight text-zinc-950 transition-colors duration-200 dark:text-zinc-50"
         >
           Testimonial SaaS
         </Link>
-        <SignOutButton className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-800 transition-colors hover:bg-zinc-50 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800" />
+        <SignOutButton className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-800 transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:border-zinc-600" />
       </header>
 
       {/* Sidebar — fixed-width on md+, full-height, sticky. */}
@@ -61,20 +61,20 @@ export function DashboardShell({
         className="hidden w-60 shrink-0 flex-col border-r border-zinc-200 bg-white md:sticky md:top-0 md:flex md:h-screen dark:border-zinc-800 dark:bg-zinc-900"
         aria-label="Dashboard sidebar"
       >
-        <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-5">
+        <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-4">
           {/* Brand + plan pill */}
           <div className="flex flex-col gap-2">
             <Link
               href="/dashboard"
-              className="text-base font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
+              className="text-base font-semibold tracking-tight text-zinc-950 transition-colors duration-200 dark:text-zinc-50"
             >
               Testimonial SaaS
             </Link>
             <span
               className={
                 plan === "premium"
-                  ? "inline-flex w-fit items-center rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800 dark:bg-amber-900/40 dark:text-amber-200"
-                  : "inline-flex w-fit items-center rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                  ? "inline-flex w-fit items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-900 dark:bg-amber-900/30 dark:text-amber-300"
+                  : "inline-flex w-fit items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
               }
               aria-label={`Current plan: ${plan}`}
             >
@@ -92,7 +92,7 @@ export function DashboardShell({
           <div className="flex items-center gap-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
             <span
               aria-hidden
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-200 text-sm font-semibold text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200"
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-200 text-sm font-semibold text-zinc-700 ring-1 ring-zinc-200 dark:bg-zinc-700 dark:text-zinc-200 dark:ring-zinc-700"
             >
               {initials}
             </span>
@@ -104,7 +104,7 @@ export function DashboardShell({
                 {user.email}
               </p>
             </div>
-            <SignOutButton className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs font-medium text-zinc-800 transition-colors hover:bg-zinc-50 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800" />
+            <SignOutButton className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-xs font-medium text-zinc-800 transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:border-zinc-600" />
           </div>
         </div>
       </aside>

@@ -110,7 +110,7 @@ export function WidgetCard({
             ) : null}
           </p>
         </div>
-        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
           <span aria-hidden>♥</span>
           Live
         </span>
@@ -145,7 +145,7 @@ export function WidgetCard({
             <button
               type="button"
               onClick={() => onEdit(space.publicSlug, widget)}
-              className="inline-flex h-9 items-center gap-1.5 rounded-md border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-800 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
+              className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-800 transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
@@ -173,7 +173,7 @@ export function WidgetCard({
               href={`/p/${space.publicSlug}/wall`}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline-offset-4 hover:underline"
+              className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline hover:text-zinc-950 transition-colors duration-150 dark:text-zinc-300 dark:hover:text-zinc-50"
             >
               /p/{space.publicSlug}/wall
             </Link>{" "}
@@ -184,7 +184,7 @@ export function WidgetCard({
           href={`/p/${space.publicSlug}/wall`}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto inline-flex h-9 items-center justify-center rounded-md border border-zinc-300 bg-white px-3 text-xs font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+          className="ml-auto inline-flex h-9 items-center justify-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-xs font-medium text-zinc-700 transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
         >
           View wall ↗
         </Link>

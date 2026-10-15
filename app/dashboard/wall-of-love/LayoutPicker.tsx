@@ -58,7 +58,7 @@ function LayoutCard({
   return (
     <label
       className={
-        "group flex cursor-pointer flex-col gap-2 rounded-xl border p-3 transition-colors " +
+        "group flex cursor-pointer flex-col gap-2 rounded-xl border p-3 transition-all duration-200 " +
         (selected
           ? "border-rose-400 bg-rose-50/60 dark:border-rose-500 dark:bg-rose-950/30"
           : "border-zinc-200 bg-white hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-600")

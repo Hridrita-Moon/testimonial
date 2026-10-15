@@ -33,11 +33,13 @@ export default function BillingPage(props: {
     <main className="mx-auto max-w-3xl px-6 py-12">
       <header className="mb-8 flex items-baseline justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">Billing</h1>
+          <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
+            Billing
+          </h1>
         </div>
         <Link
           href="/dashboard"
-          className="text-sm text-zinc-600 underline-offset-4 hover:underline"
+          className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline hover:text-zinc-950 transition-colors duration-150 dark:text-zinc-300 dark:hover:text-zinc-50"
         >
           Back to dashboard
         </Link>
@@ -53,10 +55,10 @@ export default function BillingPage(props: {
 function BillingContentFallback() {
   return (
     <>
-      <div className="mt-1 h-4 w-64 rounded bg-zinc-200" />
-      <div className="mt-6 h-32 rounded-2xl border border-zinc-200 bg-white shadow-sm" />
-      <div className="mt-6 h-48 rounded-2xl border border-zinc-200 bg-white shadow-sm" />
-      <div className="mt-6 h-32 rounded-2xl border border-zinc-200 bg-white shadow-sm" />
+      <div className="mt-1 h-4 w-64 rounded bg-zinc-200 dark:bg-zinc-800" />
+      <div className="mt-6 h-32 rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900" />
+      <div className="mt-6 h-48 rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900" />
+      <div className="mt-6 h-32 rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900" />
     </>
   );
 }

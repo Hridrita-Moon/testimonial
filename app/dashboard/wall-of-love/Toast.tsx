@@ -53,7 +53,7 @@ function Toast({
 
   return (
     <div
-      className="pointer-events-auto flex items-center gap-2 rounded-md border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
+      className="pointer-events-auto flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-900 shadow-xl transition-all duration-200 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
       style={{ animation: "toast-in 200ms ease-out" }}
       role="status"
       aria-live="polite"

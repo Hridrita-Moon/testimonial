@@ -181,7 +181,7 @@ export async function DashboardOverview() {
                     <span>{t.rating} ★</span>
                   ) : null}
                   {t.visibilityStatus === "hidden" ? (
-                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-amber-800">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
                       Hidden
                     </span>
                   ) : null}
@@ -229,7 +229,7 @@ function QuickLink({
   return (
     <a
       href={href}
-      className="block rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:bg-zinc-800"
+      className="block rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:bg-zinc-800"
     >
       <p className="text-sm font-semibold text-zinc-950 dark:text-zinc-50">
         {title} →

@@ -34,7 +34,7 @@ import { AlreadySignedIn } from "./AlreadySignedIn";
 export default function SignInPage() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-6 py-12">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+      <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm ring-1 ring-black/5 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-white/10">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
           Sign in
         </h1>
@@ -50,7 +50,7 @@ export default function SignInPage() {
           Don&apos;t have an account?{" "}
           <Link
             href="/sign-up"
-            className="font-medium text-zinc-950 underline-offset-4 hover:underline dark:text-zinc-50"
+            className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline hover:text-zinc-950 transition-colors duration-150 dark:text-zinc-300 dark:hover:text-zinc-50"
           >
             Create one
           </Link>
@@ -87,7 +87,7 @@ function SignInFormFallback() {
       <button
         type="button"
         disabled
-        className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white opacity-60 dark:bg-zinc-100 dark:text-zinc-900"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-zinc-900 px-5 text-sm font-medium text-white opacity-60 dark:bg-zinc-100 dark:text-zinc-900"
       >
         Sign in
       </button>

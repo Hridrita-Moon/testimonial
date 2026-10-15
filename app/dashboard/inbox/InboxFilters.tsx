@@ -65,13 +65,13 @@ export function InboxFilters({
       className="grid grid-cols-1 gap-3 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4 dark:border-zinc-800 dark:bg-zinc-900"
     >
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
           Space
         </label>
         <select
           name="spaceId"
           defaultValue={current.spaceId ?? ""}
-          className="rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         >
           <option value="">All spaces</option>
           {spaces.map((s) => (
@@ -83,13 +83,13 @@ export function InboxFilters({
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
           Rating
         </label>
         <select
           name="rating"
           defaultValue={current.rating ?? ""}
-          className="rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         >
           <option value="">Any</option>
           {[1, 2, 3, 4, 5].map((n) => (
@@ -101,13 +101,13 @@ export function InboxFilters({
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
           Visibility
         </label>
         <select
           name="visibility"
           defaultValue={current.visibility ?? ""}
-          className="rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         >
           <option value="">Published (default)</option>
           <option value="hidden">Hidden</option>
@@ -115,7 +115,7 @@ export function InboxFilters({
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
           Search
         </label>
         <input
@@ -123,12 +123,12 @@ export function InboxFilters({
           type="search"
           defaultValue={current.q ?? ""}
           placeholder="Name or text…"
-          className="rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
         />
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
           From
         </label>
         <input
@@ -139,12 +139,12 @@ export function InboxFilters({
               ? current.fromDate.toISOString().slice(0, 10)
               : ""
           }
-          className="rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         />
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
           To
         </label>
         <input
@@ -153,7 +153,7 @@ export function InboxFilters({
           defaultValue={
             current.toDate ? current.toDate.toISOString().slice(0, 10) : ""
           }
-          className="rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
         />
       </div>
 
@@ -170,13 +170,13 @@ export function InboxFilters({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex h-9 items-center justify-center rounded-md bg-zinc-900 px-4 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-zinc-900 px-4 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 active:bg-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-zinc-100"
         >
           {isPending ? "Filtering…" : "Apply"}
         </button>
         <a
           href="/dashboard/inbox"
-          className="text-sm text-zinc-600 underline-offset-4 hover:underline dark:text-zinc-400"
+          className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline hover:text-zinc-950 transition-colors duration-150 dark:text-zinc-300 dark:hover:text-zinc-50"
         >
           Reset
         </a>

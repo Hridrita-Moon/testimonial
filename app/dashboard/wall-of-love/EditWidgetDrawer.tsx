@@ -130,20 +130,20 @@ export function EditWidgetDrawer({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-end bg-zinc-950/50"
+      className="fixed inset-0 z-50 flex justify-end bg-zinc-950/60 backdrop-blur-sm"
       onClick={() => !saving && onClose()}
       role="dialog"
       aria-modal="true"
       aria-label={`Edit widget for ${spaceTitle}`}
     >
       <div
-        className="flex h-full w-full max-w-3xl flex-col overflow-hidden bg-white shadow-2xl dark:bg-zinc-950"
+        className="flex h-full w-full max-w-3xl flex-col overflow-hidden bg-white shadow-2xl ring-1 ring-black/5 dark:bg-zinc-950 dark:ring-white/10"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <header className="flex items-baseline justify-between border-b border-zinc-200 px-6 py-4 dark:border-zinc-800">
           <div>
-            <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            <h2 className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
               Edit widget
             </h2>
             <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
@@ -155,7 +155,7 @@ export function EditWidgetDrawer({
             onClick={onClose}
             disabled={saving}
             aria-label="Close"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 hover:bg-zinc-100 disabled:opacity-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-300 bg-white text-zinc-500 transition-all duration-200 hover:bg-zinc-50 hover:text-zinc-900 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M18 6L6 18M6 6l12 12" />
@@ -236,14 +236,14 @@ export function EditWidgetDrawer({
                 type="button"
                 onClick={onClose}
                 disabled={saving}
-                className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-800 hover:bg-zinc-50 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
+                className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-800 transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 disabled:opacity-60 disabled:cursor-not-allowed dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={saving}
-                className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-zinc-900 px-4 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 active:bg-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-zinc-100"
               >
                 {saving ? "Saving…" : "Save"}
               </button>
@@ -253,13 +253,13 @@ export function EditWidgetDrawer({
           {/* Preview column */}
           <div className="flex flex-col gap-2 overflow-hidden bg-zinc-50 px-4 py-4 dark:bg-zinc-900">
             <div className="flex items-center justify-between gap-2">
-              <p className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+              <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 Live preview
               </p>
               <button
                 type="button"
                 onClick={() => setBust((b) => b + 1)}
-                className="inline-flex h-7 items-center gap-1 rounded-md border border-zinc-300 bg-white px-2 text-[11px] font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+                className="inline-flex h-8 items-center gap-1 rounded-md border border-zinc-300 bg-white px-2 text-[11px] font-medium text-zinc-700 transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
                 aria-label="Refresh preview"
                 title="Refresh preview"
               >
@@ -301,7 +301,7 @@ function SegmentedControl<T extends string>({
     <div
       role="radiogroup"
       aria-label={name}
-      className="inline-flex w-fit rounded-md border border-zinc-300 bg-white p-0.5 dark:border-zinc-700 dark:bg-zinc-900"
+      className="inline-flex w-fit rounded-md border border-zinc-300 bg-zinc-100 p-0.5 transition-all duration-200 dark:border-zinc-700 dark:bg-zinc-800/50"
     >
       {options.map((o) => {
         const active = o.value === value;
@@ -314,8 +314,8 @@ function SegmentedControl<T extends string>({
             onClick={() => onChange(o.value)}
             className={
               active
-                ? "rounded px-3 py-1 text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                : "rounded px-3 py-1 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                ? "rounded px-3 py-1 text-sm font-medium bg-zinc-900 text-white shadow-sm transition-all duration-200 dark:bg-zinc-100 dark:text-zinc-900"
+                : "rounded px-3 py-1 text-sm font-medium text-zinc-700 transition-colors duration-150 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
             }
           >
             {o.label}
@@ -351,15 +351,15 @@ function Toggle({
         onClick={() => onChange(!checked)}
         className={
           checked
-            ? "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-900 transition-colors dark:bg-zinc-100"
-            : "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-300 transition-colors dark:bg-zinc-700"
+            ? "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-900 transition-all duration-200 dark:bg-zinc-100"
+            : "relative inline-flex h-5 w-9 items-center rounded-full bg-zinc-300 transition-all duration-200 dark:bg-zinc-700"
         }
       >
         <span
           className={
             checked
-              ? "inline-block h-4 w-4 translate-x-4 transform rounded-full bg-white transition-transform dark:bg-zinc-900"
-              : "inline-block h-4 w-4 translate-x-0.5 transform rounded-full bg-white transition-transform dark:bg-zinc-200"
+              ? "inline-block h-4 w-4 translate-x-4 transform rounded-full bg-white shadow-sm transition-transform dark:bg-zinc-900"
+              : "inline-block h-4 w-4 translate-x-0.5 transform rounded-full bg-white shadow-sm transition-transform dark:bg-zinc-200"
           }
         />
       </button>

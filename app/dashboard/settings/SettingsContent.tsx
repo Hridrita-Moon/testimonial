@@ -67,8 +67,8 @@ export async function SettingsContent() {
           <span
             className={
               plan === "premium"
-                ? "inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800 dark:bg-amber-900/40 dark:text-amber-200"
-                : "inline-flex items-center rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                ? "inline-flex w-fit items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-900 dark:bg-amber-900/30 dark:text-amber-300"
+                : "inline-flex w-fit items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
             }
           >
             {plan === "premium" ? "Premium" : "Free"}
@@ -98,7 +98,7 @@ export async function SettingsContent() {
         <div className="mt-5 flex flex-wrap gap-2">
           <Link
             href="/dashboard/billing"
-            className="inline-flex h-9 items-center justify-center rounded-md bg-zinc-900 px-4 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-zinc-900 px-5 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 active:bg-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-zinc-100"
           >
             Manage billing
           </Link>
@@ -111,7 +111,7 @@ export async function SettingsContent() {
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+      <dt className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
         {label}
       </dt>
       <dd className="mt-1 text-sm text-zinc-900 dark:text-zinc-100">{value}</dd>

@@ -34,7 +34,7 @@ export function DashboardShellFallback({
       <header className="flex items-center justify-between border-b border-zinc-200 bg-white px-4 py-3 md:hidden dark:border-zinc-800 dark:bg-zinc-900">
         <Link
           href="/dashboard"
-          className="text-sm font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
+          className="text-sm font-semibold tracking-tight text-zinc-950 transition-colors duration-200 dark:text-zinc-50"
         >
           Testimonial SaaS
         </Link>
@@ -45,17 +45,17 @@ export function DashboardShellFallback({
         className="hidden w-60 shrink-0 flex-col border-r border-zinc-200 bg-white md:sticky md:top-0 md:flex md:h-screen dark:border-zinc-800 dark:bg-zinc-900"
         aria-label="Dashboard sidebar"
       >
-        <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-5">
+        <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-4">
           {/* Brand + plan pill (static) */}
           <div className="flex flex-col gap-2">
             <Link
               href="/dashboard"
-              className="text-base font-semibold tracking-tight text-zinc-950 dark:text-zinc-50"
+              className="text-base font-semibold tracking-tight text-zinc-950 transition-colors duration-200 dark:text-zinc-50"
             >
               Testimonial SaaS
             </Link>
             <span
-              className="inline-flex w-fit items-center rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+              className="inline-flex w-fit items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
               aria-label="Current plan: Free"
             >
               Free
@@ -63,11 +63,11 @@ export function DashboardShellFallback({
           </div>
 
           {/* Nav skeleton — 5 rows matching the real nav items */}
-          <nav className="flex flex-col gap-1" aria-label="Dashboard">
+          <nav className="flex flex-col gap-0.5" aria-label="Dashboard">
             {[0, 1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="h-8 rounded-md bg-zinc-100 dark:bg-zinc-800"
+                className="h-8 rounded-md bg-zinc-100 ring-1 ring-zinc-200 dark:bg-zinc-800 dark:ring-zinc-700"
               />
             ))}
           </nav>
@@ -79,7 +79,7 @@ export function DashboardShellFallback({
           <div className="flex items-center gap-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
             <span
               aria-hidden
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700"
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-200 ring-1 ring-zinc-200 dark:bg-zinc-700 dark:ring-zinc-700"
             />
             <div className="min-w-0 flex-1 space-y-1">
               <div className="h-3 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />

@@ -39,7 +39,7 @@ export async function SignUpCard({ searchParams }: PageProps) {
         Already have an account?{" "}
         <Link
           href={`/sign-in${next ? `?next=${encodeURIComponent(next)}` : ""}`}
-          className="font-medium text-zinc-950 underline-offset-4 hover:underline dark:text-zinc-50"
+          className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline hover:text-zinc-950 transition-colors duration-150 dark:text-zinc-300 dark:hover:text-zinc-50"
         >
           Sign in
         </Link>

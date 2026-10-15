@@ -86,8 +86,8 @@ export function CarouselWall({
       <p
         className={
           isDark
-            ? "rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8 text-center text-sm text-zinc-400"
-            : "rounded-2xl border border-dashed border-zinc-200 bg-white p-8 text-center text-sm text-zinc-500"
+            ? "rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/40 p-10 text-center text-sm text-zinc-400 transition-all duration-200"
+            : "rounded-2xl border border-dashed border-zinc-300 bg-white p-10 text-center text-sm text-zinc-500 transition-all duration-200"
         }
       >
         No testimonials on this wall yet.
@@ -173,7 +173,21 @@ export function CarouselWall({
           border: 1px solid rgba(0,0,0,0.08);
           box-shadow: 0 2px 12px rgba(0,0,0,0.08);
           cursor: pointer;
-          transition: opacity 120ms;
+          transition: all 200ms;
+        }
+        [data-theme="dark"] .carousel-wall__btn {
+          background: rgba(24,24,27,0.92);
+          color: #fafafa;
+          border-color: rgba(255,255,255,0.12);
+          box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        .carousel-wall__btn:hover:not(:disabled) {
+          background: #ffffff;
+          color: #09090b;
+        }
+        [data-theme="dark"] .carousel-wall__btn:hover:not(:disabled) {
+          background: #09090b;
+          color: #fafafa;
         }
         .carousel-wall__btn:disabled { opacity: 0.4; cursor: default; }
         .carousel-wall__btn--prev { left: 0.5rem; }

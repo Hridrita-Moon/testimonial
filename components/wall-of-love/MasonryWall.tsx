@@ -72,8 +72,8 @@ export function MasonryWall({
       <p
         className={
           isDark
-            ? "rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8 text-center text-sm text-zinc-400"
-            : "rounded-2xl border border-dashed border-zinc-200 bg-white p-8 text-center text-sm text-zinc-500"
+            ? "rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/40 p-10 text-center text-sm text-zinc-400 transition-all duration-200"
+            : "rounded-2xl border border-dashed border-zinc-300 bg-white p-10 text-center text-sm text-zinc-500 transition-all duration-200"
         }
       >
         No testimonials on this wall yet.

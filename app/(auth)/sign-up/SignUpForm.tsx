@@ -127,7 +127,7 @@ export function SignUpForm({ next }: { next: string | null }) {
       <button
         type="submit"
         disabled={submitting}
-        className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-zinc-900 px-5 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 active:bg-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-zinc-100"
       >
         {submitting ? "Creating account…" : "Create account"}
       </button>
@@ -171,13 +171,13 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         aria-invalid={error ? "true" : "false"}
-        className="rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+        className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
       />
       {hint && !error ? (
-        <p className="text-xs text-zinc-500">{hint}</p>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">{hint}</p>
       ) : null}
       {error ? (
-        <p className="text-xs text-red-700 dark:text-red-400" role="alert">
+        <p className="text-xs text-red-600 dark:text-red-400" role="alert">
           {error}
         </p>
       ) : null}

@@ -54,8 +54,8 @@ export function WallTestimonialCard({
     <article
       className={
         isDark
-          ? "flex h-full flex-col gap-2 rounded-xl border border-zinc-800 bg-zinc-900/80 p-4 shadow-sm"
-          : "flex h-full flex-col gap-2 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm"
+          ? "flex h-full flex-col gap-2 rounded-xl border border-zinc-800 bg-zinc-900/80 p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+          : "flex h-full flex-col gap-2 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
       }
     >
       <div className="flex items-baseline justify-between gap-2">

@@ -32,7 +32,7 @@ export function SidebarNav({
   const pathname = usePathname() ?? "";
 
   return (
-    <nav className="flex flex-col gap-1" aria-label="Dashboard">
+    <nav className="flex flex-col gap-0.5" aria-label="Dashboard">
       {items.map((item) => {
         const isActive =
           !item.disabled &&
@@ -40,7 +40,7 @@ export function SidebarNav({
             (item.href !== "/dashboard" && pathname.startsWith(item.href + "/")) ||
             (item.href === "/dashboard" && pathname === "/dashboard"));
         const base =
-          "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors";
+          "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:focus-visible:ring-zinc-700";
         const active =
           "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900";
         const inactive =

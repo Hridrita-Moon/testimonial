@@ -112,12 +112,12 @@ function InboxRow({ testimonial }: { testimonial: InboxTestimonial }) {
         </div>
         <div className="flex items-center gap-2 text-xs">
           {testimonial.rating != null && testimonial.space.ratingEnabled ? (
-            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-amber-900">
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
               {testimonial.rating} ★
             </span>
           ) : null}
           {testimonial.visibilityStatus === "hidden" ? (
-            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-amber-900">
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
               Hidden
             </span>
           ) : null}
@@ -207,14 +207,14 @@ function ActionButton({
   children: React.ReactNode;
 }) {
   const base =
-    "inline-flex h-8 items-center justify-center rounded-md px-3 text-xs font-medium transition-colors disabled:opacity-60";
+    "inline-flex h-8 items-center justify-center rounded-md px-3 text-xs font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:focus-visible:ring-zinc-700 disabled:opacity-60 disabled:cursor-not-allowed";
   const styles: Record<typeof variant, string> = {
     primary:
-      "bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300",
+      "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200",
     ghost:
-      "border border-zinc-300 bg-white text-zinc-800 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800",
+      "border border-zinc-300 bg-white text-zinc-800 hover:bg-zinc-50 hover:border-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:border-zinc-600",
     danger:
-      "border border-red-300 bg-white text-red-700 hover:bg-red-50 dark:border-red-800 dark:bg-zinc-900 dark:text-red-400 dark:hover:bg-red-950",
+      "border border-red-300 bg-white text-red-700 hover:bg-red-50 hover:border-red-400 dark:border-red-800 dark:bg-zinc-900 dark:text-red-300 dark:hover:bg-red-950/50",
     // "On the wall" — filled rose chip, slightly larger than the
     // other ghost buttons so it reads as the row's primary toggle.
     wallOn:

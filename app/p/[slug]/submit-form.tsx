@@ -254,7 +254,7 @@ export function SubmitForm({ slug, ratingEnabled, fields }: SubmitFormProps) {
         type="submit"
         disabled={isSubmitting}
         aria-busy={isSubmitting}
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-zinc-900 px-5 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 active:bg-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-zinc-100"
       >
         {isSubmitting ? (
           <>
@@ -310,7 +310,7 @@ function Field({
           required={config.required}
           rows={5}
           aria-invalid={error ? "true" : "false"}
-          className="rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
         />
       ) : (
         <input
@@ -321,7 +321,7 @@ function Field({
           onChange={(e) => onChange(e.target.value)}
           required={config.required}
           aria-invalid={error ? "true" : "false"}
-          className="rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors duration-150 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-zinc-500"
         />
       )}
       {error ? (
@@ -400,7 +400,7 @@ function SubmitSuccess({
 
   return (
     <div
-      className="submit-success relative overflow-hidden rounded-lg border border-emerald-200 bg-emerald-50 p-6 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-100"
+      className="submit-success relative overflow-hidden rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-emerald-900 shadow-md ring-1 ring-emerald-200/50 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-100 dark:ring-emerald-800/50"
       role="status"
       aria-live="polite"
     >

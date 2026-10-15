@@ -22,5 +22,113 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
+/* =============================================================================
+ * Visual vocabulary — the single source of truth for all UI classes in this app.
+ * Every className edit in this codebase should resolve to one of these primitives.
+ *
+ * Primitives
+ * ----------
+ * - Page background ........ bg-zinc-50                   | dark:bg-zinc-950
+ * - Card surface ........... rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm
+ *                          | dark:border-zinc-800 dark:bg-zinc-900
+ * - Card (empty state) ..... rounded-2xl border border-dashed border-zinc-300 bg-white p-10 text-center
+ *                          | dark:border-zinc-700 dark:bg-zinc-900
+ * - Primary button (form) .. inline-flex h-10 items-center justify-center gap-2 rounded-md
+ *                          | bg-zinc-900 px-5 text-sm font-medium text-white
+ *                          | transition-all duration-200 hover:bg-zinc-800 active:bg-zinc-950
+ *                          | focus-visible:outline-none focus-visible:ring-2
+ *                          | focus-visible:ring-zinc-900 focus-visible:ring-offset-2
+ *                          | disabled:opacity-50 disabled:cursor-not-allowed
+ *                          | dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200
+ *                          | dark:focus-visible:ring-zinc-100
+ * - Primary button (page) .. inline-flex h-10 items-center justify-center gap-2 rounded-full
+ *                          | bg-zinc-900 px-5 text-sm font-medium text-white
+ *                          | transition-all duration-200 hover:bg-zinc-800
+ *                          | focus-visible:outline-none focus-visible:ring-2
+ *                          | focus-visible:ring-zinc-900 focus-visible:ring-offset-2
+ *                          | dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200
+ * - Secondary button ....... inline-flex h-9 items-center justify-center gap-2 rounded-md
+ *                          | border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-800
+ *                          | transition-all duration-200 hover:bg-zinc-50 hover:border-zinc-400
+ *                          | focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300
+ *                          | dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100
+ *                          | dark:hover:bg-zinc-800 dark:hover:border-zinc-600
+ * - Danger button .......... rounded-md border border-red-300 bg-white px-3 py-2
+ *                          | text-sm font-medium text-red-700 hover:bg-red-50 hover:border-red-400
+ *                          | focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300
+ *                          | dark:border-red-800 dark:bg-zinc-900 dark:text-red-300
+ *                          | dark:hover:bg-red-950/50
+ * - Icon button (36×36) .... inline-flex h-9 w-9 items-center justify-center rounded-md
+ *                          | border border-zinc-300 bg-white text-zinc-700
+ *                          | transition-all duration-200 hover:bg-zinc-50 hover:text-zinc-900
+ *                          | hover:border-zinc-400
+ *                          | focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300
+ *                          | dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200
+ *                          | dark:hover:bg-zinc-800 dark:hover:border-zinc-600
+ * - Text link .............. text-sm font-medium text-zinc-700 underline-offset-4
+ *                          | hover:underline hover:text-zinc-950 transition-colors duration-150
+ *                          | dark:text-zinc-300 dark:hover:text-zinc-50
+ * - Text input ............. block w-full rounded-md border border-zinc-300 bg-white px-3 py-2
+ *                          | text-sm text-zinc-900 placeholder:text-zinc-400
+ *                          | transition-colors duration-150 focus:border-zinc-500 focus:outline-none
+ *                          | focus:ring-2 focus:ring-zinc-900/10
+ *                          | dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100
+ *                          | dark:placeholder:text-zinc-500 dark:focus:border-zinc-500
+ * - Select ................. block w-full rounded-md border border-zinc-300 bg-white px-3 py-2
+ *                          | text-sm transition-colors duration-150 focus:border-zinc-500
+ *                          | focus:outline-none focus:ring-2 focus:ring-zinc-900/10
+ *                          | dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100
+ * - Field label ............ text-sm font-medium text-zinc-800   | dark:text-zinc-200
+ * - Field hint ............. text-xs text-zinc-500               | dark:text-zinc-400
+ * - Field error ............ text-xs text-red-600                | dark:text-red-400
+ * - Pill (neutral) ......... inline-flex w-fit items-center gap-1 rounded-full bg-zinc-100
+ *                          | px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-700
+ *                          | dark:bg-zinc-800 dark:text-zinc-300
+ * - Pill (premium) ......... inline-flex w-fit items-center gap-1 rounded-full bg-amber-100
+ *                          | px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-900
+ *                          | dark:bg-amber-900/30 dark:text-amber-300
+ * - Pill (success) ......... inline-flex items-center gap-1 rounded-full bg-emerald-50
+ *                          | px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-700
+ *                          | dark:bg-emerald-900/30 dark:text-emerald-300
+ * - Pill (rating / hidden) . inline-flex items-center gap-1 rounded-full bg-amber-50
+ *                          | px-2 py-0.5 text-xs font-medium text-amber-700
+ *                          | dark:bg-amber-900/30 dark:text-amber-300
+ * - Pill (info) ............ inline-flex items-center gap-1 rounded-full bg-zinc-100
+ *                          | px-2 py-0.5 text-xs font-medium text-zinc-700
+ *                          | dark:bg-zinc-800 dark:text-zinc-300
+ * - Section header ......... text-lg font-semibold tracking-tight text-zinc-950   | dark:text-zinc-50
+ * - Page H1 ................ text-3xl font-semibold tracking-tight text-zinc-950   | dark:text-zinc-50
+ * - Subtle text ............ text-sm text-zinc-600          | dark:text-zinc-400
+ * - Muted text ............. text-xs text-zinc-500          | dark:text-zinc-500
+ * - Divider ................ border-t border-zinc-200       | dark:border-zinc-800
+ * - Modal / Drawer backdrop  bg-zinc-950/60 backdrop-blur-sm
+ * - Modal panel ............ rounded-2xl border border-zinc-200 bg-white p-6 shadow-2xl ring-1 ring-black/5
+ *                          | dark:border-zinc-800 dark:bg-zinc-950 dark:ring-white/10
+ * - Drawer panel ........... bg-white shadow-2xl ring-1 ring-black/5
+ *                          | dark:bg-zinc-950 dark:ring-white/10
+ * - Toast .................. rounded-xl border border-zinc-200 bg-white px-4 py-3
+ *                          | text-sm font-medium text-zinc-900 shadow-xl
+ *                          | dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100
+ * - Progress track ......... h-2 w-full overflow-hidden rounded-full bg-zinc-200   | dark:bg-zinc-800
+ * - Progress fill .......... h-full rounded-full bg-zinc-900 transition-all duration-500   | dark:bg-zinc-100
+ * - Segmented control ...... inline-flex w-fit rounded-md border border-zinc-300 bg-zinc-100 p-0.5
+ *                          | dark:border-zinc-700 dark:bg-zinc-800/50
+ * - Segmented (active) ..... bg-zinc-900 text-white shadow-sm
+ *                          | dark:bg-zinc-100 dark:text-zinc-900
+ * - Segmented (inactive) ... text-zinc-700 hover:text-zinc-900
+ *                          | dark:text-zinc-300 dark:hover:text-zinc-100
+ * - Switch track (on) ...... bg-zinc-900   | dark:bg-zinc-100
+ * - Switch track (off) ..... bg-zinc-300   | dark:bg-zinc-700
+ * - Switch knob ............ bg-white shadow-sm   | dark:bg-zinc-900
+ *
+ * Conventions
+ * -----------
+ * - All buttons: transition-all duration-200 + focus-visible:ring-2.
+ * - All inputs : focus:ring-2 focus:ring-zinc-900/10.
+ * - All pills  : tracking-wider (not tracking-wide).
+ * - All modals : dark:bg-zinc-950 with ring-1 ring-white/10 for elevation.
+ * - All other cards stay on dark:bg-zinc-900 (one shade above the page bg).
+ * ============================================================================= */

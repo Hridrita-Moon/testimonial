@@ -122,7 +122,7 @@ export default async function PublicWallPage({ params, searchParams }: PageProps
     <main className={wrapperClass} data-theme={effectiveTheme} data-layout={effectiveLayout} data-scroll-direction={scrollDirection}>
       <div className="mx-auto max-w-5xl px-6 py-12">
         <header className="mb-8 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50">
             Wall of Love
           </h1>
           <p className="mt-2 text-base font-medium text-zinc-700 dark:text-zinc-300">
@@ -136,7 +136,7 @@ export default async function PublicWallPage({ params, searchParams }: PageProps
           <p className="mt-4 text-sm">
             <Link
               href={`/p/${slug}`}
-              className="text-zinc-600 underline-offset-4 hover:underline dark:text-zinc-400"
+              className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline hover:text-zinc-950 transition-colors duration-150 dark:text-zinc-300 dark:hover:text-zinc-50"
             >
               ← Leave a testimonial
             </Link>

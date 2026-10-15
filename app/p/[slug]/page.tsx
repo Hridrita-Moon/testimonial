@@ -84,25 +84,27 @@ export default async function PublicFormPage({ params }: PageProps) {
           {space.title}
         </h1>
         {space.subtitle ? (
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             {space.subtitle}
           </p>
         ) : null}
-        <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+        <p className="mt-4 text-sm text-zinc-700 dark:text-zinc-300">
           {space.prompt}
         </p>
       </header>
-      <SubmitForm
-        slug={slug}
-        ratingEnabled={space.ratingEnabled}
-        fields={enabledFields}
-      />
+      <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <SubmitForm
+          slug={slug}
+          ratingEnabled={space.ratingEnabled}
+          fields={enabledFields}
+        />
+      </div>
 
       {wallOfLoveCount > 0 ? (
         <div className="mt-8 border-t border-zinc-200 pt-6 text-center dark:border-zinc-800">
           <a
             href={`/p/${slug}/wall`}
-            className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline dark:text-zinc-300"
+            className="text-sm font-medium text-zinc-700 underline-offset-4 hover:underline hover:text-zinc-950 transition-colors duration-150 dark:text-zinc-300 dark:hover:text-zinc-50"
           >
             View the Wall of Love →
           </a>

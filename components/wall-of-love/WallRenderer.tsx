@@ -54,10 +54,10 @@ export function WallRenderer({
   return (
     <div
       className={
-        "wall-renderer relative overflow-hidden rounded-2xl " +
+        "wall-renderer relative overflow-hidden rounded-2xl transition-all duration-200 " +
         (isDark
-          ? "border border-zinc-800 bg-zinc-950 p-4 shadow-inner"
-          : "border border-zinc-200 bg-gradient-to-br from-rose-50 via-white to-amber-50 p-4 shadow-inner")
+          ? "border border-zinc-800 bg-zinc-950 p-6 shadow-inner ring-1 ring-white/5"
+          : "border border-zinc-200 bg-gradient-to-br from-rose-50 via-white to-amber-50 p-6 shadow-inner ring-1 ring-black/5")
       }
       data-layout={layoutId}
       data-theme={theme}

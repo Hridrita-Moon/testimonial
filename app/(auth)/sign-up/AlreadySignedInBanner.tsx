@@ -65,7 +65,7 @@ export function AlreadySignedInBanner({ next }: { next: string }) {
       You are already signed in.{" "}
       <Link
         href={next}
-        className="font-medium underline-offset-4 hover:underline"
+        className="font-medium underline-offset-4 hover:underline transition-colors duration-150"
       >
         Go to dashboard
       </Link>{" "}
