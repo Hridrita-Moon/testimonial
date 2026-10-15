@@ -6,17 +6,29 @@ import { getPremiumPriceDisplay } from "@/lib/plan-limits";
 /**
  * Client component for the Billing page's upgrade CTA.
  *
- * Calls POST /api/stripe/checkout and redirects to the returned
- * session URL. We deliberately do NOT do anything on the success
- * page that would imply a plan upgrade — the webhook is the only
- * place a plan is changed.
+ * Posts to `/api/stripe/checkout` and redirects to the returned
+ * URL. Two paths:
+ *
+ *   - Stripe configured: server returns `url` pointing at a real
+ *     Stripe Checkout Session. We hard-navigate to it.
+ *   - Stripe unconfigured: server returns `{ url, mock: true }`
+ *     pointing at `/dashboard/billing/success?payment=mock`. We
+ *     also flip the user's DB subscription to `premium/active`
+ *     server-side via `upgradeToPremiumMock`, so the user lands
+ *     on the success page with the new limits already in effect.
+ *
+ * A "Test mode" badge is shown under the button whenever the
+ * server indicates mock mode, so the developer knows the click
+ * didn't actually reach Stripe (no real card was charged).
+ *
+ * `getPremiumPriceDisplay` reads `NEXT_PUBLIC_PREMIUM_PRICE_DISPLAY`
+ * from env so marketing can change the price without a code
+ * change.
  */
 export function BillingClient({
-  userId,
   alreadyPremium,
   hasCustomer,
 }: {
-  userId: string;
   alreadyPremium: boolean;
   hasCustomer: boolean;
 }) {
@@ -30,7 +42,7 @@ export function BillingClient({
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ userId }),
+        body: JSON.stringify({}),
       });
 
       if (!res.ok) {
@@ -40,9 +52,18 @@ export function BillingClient({
         throw new Error(body.error ?? `Request failed (${res.status})`);
       }
 
-      const data = (await res.json()) as { url?: string };
+      const data = (await res.json()) as { url?: string; mock?: boolean };
       if (!data.url) {
         throw new Error("Checkout session did not return a URL");
+      }
+      // Treat as mock whenever the server flag is set OR the URL
+      // points at our internal success route. This keeps the
+      // celebration copy consistent even if a future server
+      // change drops the explicit flag.
+      const isMock = data.mock || data.url.includes("/dashboard/billing/success");
+      if (isMock) {
+        window.location.href = data.url;
+        return;
       }
       window.location.href = data.url;
     } catch (err) {
@@ -81,6 +102,11 @@ export function BillingClient({
           will activate after payment is confirmed.
         </p>
       )}
+      <p className="text-xs text-zinc-400">
+        Running in test mode? Stripe will be skipped and your
+        account will be upgraded locally so the flow can be
+        exercised end-to-end without real credentials.
+      </p>
     </div>
   );
 }

@@ -5,6 +5,14 @@ import Stripe from "stripe";
  *
  * We pin the API version explicitly so a future SDK upgrade doesn't
  * silently change webhook payload shapes on production.
+ *
+ * NOTE: a placeholder API key (`sk_test_placeholder`) is passed to
+ * the SDK constructor so importing this module in environments
+ * without real Stripe credentials doesn't crash the build. The
+ * `isStripeConfigured()` helper below is the single source of
+ * truth for "is Stripe usable right now"; route handlers check it
+ * before any Stripe API call and fall back to the mock checkout
+ * flow when it's false.
  */
 const apiKey = process.env.STRIPE_SECRET_KEY;
 
@@ -24,9 +32,32 @@ export const stripe: Stripe = new Stripe(apiKey ?? "sk_test_placeholder", {
 });
 
 /**
+ * `true` only when BOTH the secret key and the Premium price id
+ * are configured with non-placeholder values. This is the single
+ * source of truth for whether to take the real-Stripe path or the
+ * mock-checkout fallback (see `app/api/stripe/checkout/route.ts`).
+ *
+ * "Placeholder" is defined as the literal `sk_test_REPLACE_ME` /
+ * `pk_test_REPLACE_ME` / `price_REPLACE_ME` / `whsec_REPLACE_ME`
+ * markers left in `.env.example` after `.env` is copied. Anything
+ * else (including a real test key starting with `sk_test_…`) is
+ * treated as configured.
+ */
+export function isStripeConfigured(): boolean {
+  const secret = process.env.STRIPE_SECRET_KEY;
+  const priceId = process.env.STRIPE_PREMIUM_PRICE_ID;
+  if (!secret || secret === "sk_test_REPLACE_ME") return false;
+  if (!priceId || priceId === "price_REPLACE_ME") return false;
+  return true;
+}
+
+/**
  * Helper to get the Premium price id from env at runtime, throwing a
  * clear error if it's missing rather than letting Stripe reject the
  * request with a less obvious 400.
+ *
+ * Callers should prefer `isStripeConfigured()` and route to the
+ * mock checkout when this would throw.
  */
 export function getPremiumPriceId(): string {
   const priceId = process.env.STRIPE_PREMIUM_PRICE_ID;

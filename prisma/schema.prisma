@@ -33,6 +33,7 @@ model Space {
   fields               SpaceField[]
   testimonials         Testimonial[]
   embedConfigurations  EmbedConfiguration[]
+  widget               Widget?
 }
 
 model SpaceField {
@@ -95,4 +96,19 @@ model EmbedConfiguration {
   updatedAt     DateTime @updatedAt
 
   @@unique([spaceId])
+}
+
+model Widget {
+  id              String   @id @default(uuid())
+  spaceId         String   @unique
+  space           Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  widgetId        String   @unique
+  theme           String   @default("light")
+  layout          String   @default("masonryAnimated")
+  scrollDirection String   @default("up")
+  showHeart       Boolean  @default(true)
+  hideDate        Boolean  @default(false)
+  hideSource      Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }

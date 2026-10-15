@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npx prisma:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(curl -sS -o .r.json -w \"HTTP %{http_code}\\\\n\" -X POST -H \"Content-Type: application/json\" -d '{\"\"contributorName\"\":\"\"Jane\"\",\"\"contributorEmail\"\":\"\"jane@acme.com\"\",\"\"testimonialText\"\":\"\"Loved it!\"\",\"\"rating\"\":5,\"\"socialConsent\"\":true,\"\"additionalValues\"\":{\"\"companyName\"\":\"\"ACME\"\"}}' http://localhost:3000/api/spaces/seed-mv94y50t/testimonials)",
+      "Bash(curl -sS -o .r.json -w \"HTTP %{http_code}\\\\n\" -X POST -H \"Content-Type: application/json\" --data-binary @.body.json http://localhost:3000/api/spaces/seed-mv94y50t/testimonials)"
     ]
   }
 }
